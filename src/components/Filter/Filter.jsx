@@ -1,17 +1,15 @@
 import { Label, Input } from '../ContactForm/ContactForm.styled';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addFilter } from 'redux/contactsSlice';
 
+export const Filter = () =>{
+    const dispatch = useDispatch();
 
-export const Filter = ({ value, onChange}) =>{
         const filterId = nanoid();
         return <Label htmlFor={filterId}>Find contacts by name
-                <Input type="text" id={filterId} name="filter" onChange={onChange} value={value}/>
+                <Input type="text" id={filterId} name="filter" onChange={(e) => {dispatch(addFilter(e.currentTarget.value))}}/>
                 </Label>
 }
 
-Filter.propTypes = {
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-};
 
