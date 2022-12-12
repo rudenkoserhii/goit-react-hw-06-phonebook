@@ -26,10 +26,9 @@ export const ContactForm = () => {
         break;}
     }
 
-    const contact = {'name': name, 'number': number};
     const handlerSubmit = e => {
         e.preventDefault();
-        dispatch(addContact({ 'id': nanoid(), contact }));
+        dispatch(addContact({ 'id': nanoid(), 'name': name, 'number': number }));
         e.target.reset();
 
     };

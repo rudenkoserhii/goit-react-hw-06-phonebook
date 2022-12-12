@@ -27,7 +27,7 @@ export const Button = styled.button`
     background-color: ${p => p.theme.colors.lightblue};
     color: ${p => p.theme.colors.black};
 
-
+    cursor: pointer;
 `;
 
 export const Label = styled.label`

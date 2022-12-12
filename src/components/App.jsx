@@ -4,18 +4,20 @@ import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { Wrapper, H1, H2} from './Styled/Styled';
 import { useSelector } from 'react-redux';
+import { getContacts } from '../redux/contactsSlice';
+
 
 export const App = () => {
   const [ filter, setFilter ] = useState('');
 
-  const contacts = useSelector(state => state);
+  const contacts = useSelector(getContacts);
 
   const filtered = (e) => {
     setFilter(e.currentTarget.value);
   };
 
   const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-
+  
   return (
     <Wrapper>
       <H1>Phonebook</H1>
