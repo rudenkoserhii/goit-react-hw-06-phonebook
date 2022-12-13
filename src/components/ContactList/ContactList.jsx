@@ -1,15 +1,15 @@
 import { ContactListStyled } from './ContactList.styled';
 import { ContactItem } from './ContactItem';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-export const ContactList = ({ contacts }) => {
 
+export const ContactList = () => {
+    const contacts = useSelector(state => state.contacts.contacts);
+    const filter = useSelector(state => state.filter.filter);
+
+    const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter));
 
     return (<ContactListStyled>
-        { contacts.map(({ id, name, number }) => <ContactItem key={id} name={name} number={number} id={id}/>)}
+        { visibleContacts.map(({ id, name, number }) => <ContactItem key={id} name={name} number={number} id={id}/>)}
             </ContactListStyled>
 )};
-
-ContactList.propTypes = {
-    contacts: PropTypes.array.isRequired,
-};

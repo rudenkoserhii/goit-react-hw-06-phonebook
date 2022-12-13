@@ -1,7 +1,7 @@
 import { Label, Input } from '../ContactForm/ContactForm.styled';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addFilter } from 'redux/contactsSlice';
+import { addFilter } from 'redux/filterSlice';
 
 export const Filter = () =>{
     const dispatch = useDispatch();
